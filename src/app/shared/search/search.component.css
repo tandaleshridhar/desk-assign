@@ -1,0 +1,17 @@
+.main {
+  margin: 100px auto;
+}
+
+.has-search .form-control {
+  padding-left: 2.35rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.37rem;
+  line-height: 2.37rem;
+  text-align: center;
+  color: #aaa;
+}
