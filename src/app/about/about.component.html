@@ -1,4 +1,23 @@
 <div class="container" style="margin-top: 100px">
   <app-search></app-search>
-  <h4 class="text-center">About us</h4>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>albumId</th>
+        <th>id</th>
+        <th>title</th>
+        <th>url</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let contact of contacts | gsearch: searchString">
+        <tr *ngIf="contact">
+          <td>{{ contact?.albumId }}</td>
+          <td>{{ contact?.id }}</td>
+          <td>{{ contact?.title }}</td>
+          <td>{{ contact?.url }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
 </div>

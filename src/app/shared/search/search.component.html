@@ -3,7 +3,12 @@
     <div class="col-md-12">
       <div class="form-group has-search">
         <span class="fa fa-search form-control-feedback"></span>
-        <input type="text" class="form-control" placeholder="search" />
+        <input
+          type="text"
+          class="form-control"
+          (keyup)="searchData($event)"
+          placeholder="search"
+        />
       </div>
     </div>
   </div>

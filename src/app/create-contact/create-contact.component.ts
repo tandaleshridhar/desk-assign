@@ -7,18 +7,22 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./create-contact.component.css'],
 })
 export class CreateContactComponent implements OnInit {
-  contact: { id; name; description; email } = {
-    id: null,
-    name: '',
-    description: '',
-    email: '',
-  };
+  contacts: any;
+  searchString: any;
   constructor(public dataService: DataService) {}
 
-  ngOnInit(): void {}
-
-  createContact() {
-    this.dataService.addContact(this.contact);
-    this.contact = { id: null, name: '', description: '', email: '' };
+  ngOnInit(): void {
+    if (this.dataService.getLocalStorage('Comments') === null) {
+      this.dataService.getComments().subscribe((Comments) => {
+        this.contacts = Comments;
+        this.dataService.saveToLocalStorage(
+          'Comments',
+          JSON.stringify(Comments)
+        );
+      });
+    } else {
+      this.contacts = JSON.parse(localStorage.getItem('Comments'));
+    }
+    this.dataService.FindSearch.subscribe((res) => (this.searchString = res));
   }
 }

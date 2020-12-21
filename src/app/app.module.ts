@@ -11,6 +11,8 @@ import { SearchComponent } from './shared/search/search.component';
 import { FormsModule } from '@angular/forms';
 import { AboutComponent } from './about/about.component';
 import { OurServicesComponent } from './our-services/our-services.component';
+import { HttpClientModule } from '@angular/common/http';
+import { GlobalSearch } from './shared/global-search.pipe';
 
 @NgModule({
   declarations: [
@@ -22,8 +24,9 @@ import { OurServicesComponent } from './our-services/our-services.component';
     SearchComponent,
     AboutComponent,
     OurServicesComponent,
+    GlobalSearch,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -8,14 +8,18 @@ import { DataService } from '../services/data.service';
 })
 export class ContactListComponent implements OnInit {
   contacts: any;
-  selectedContact: Object;
+  searchString: any;
   constructor(public dataService: DataService) {}
 
   ngOnInit(): void {
-    this.contacts = this.dataService.getContacts();
-  }
-
-  public selectContact(contact) {
-    this.selectedContact = contact;
+    if (this.dataService.getLocalStorage('Users') === null) {
+      this.dataService.getUsers().subscribe((Users) => {
+        this.contacts = Users;
+        this.dataService.saveToLocalStorage('Users', JSON.stringify(Users));
+      });
+    } else {
+      this.contacts = JSON.parse(localStorage.getItem('Users'));
+    }
+    this.dataService.FindSearch.subscribe((res) => (this.searchString = res));
   }
 }
